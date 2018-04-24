@@ -145,6 +145,10 @@ public class DefaultProfilerConfig implements ProfilerConfig {
     private boolean traceSqlBindValue = false;
     private int maxSqlBindValueSize = 1024;
 
+    //aql
+    private boolean traceAqlBindValue = false;
+    private int maxAqlBindValueSize = 1024;
+
     // Sampling
     private boolean samplingEnable = true;
     private int samplingRate = 1;
@@ -558,7 +562,8 @@ public class DefaultProfilerConfig implements ProfilerConfig {
         // JDBC
         this.jdbcSqlCacheSize = readInt("profiler.jdbc.sqlcachesize", 1024);
         this.traceSqlBindValue = readBoolean("profiler.jdbc.tracesqlbindvalue", false);
-
+        //aql
+        this.traceAqlBindValue = readBoolean("profiler.jdbc.traceaqlbindvalue", false);
 
         this.samplingEnable = readBoolean("profiler.sampling.enable", true);
         this.samplingRate = readInt("profiler.sampling.rate", 1);
@@ -710,6 +715,16 @@ public class DefaultProfilerConfig implements ProfilerConfig {
     }
 
     @Override
+    public boolean isTraceAqlBindValue() {
+        return traceAqlBindValue;
+    }
+
+    @Override
+    public int getMaxAqlBindValueSize() {
+        return maxAqlBindValueSize;
+    }
+
+    @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("DefaultProfilerConfig{");
         sb.append("properties=").append(properties);
@@ -751,6 +766,9 @@ public class DefaultProfilerConfig implements ProfilerConfig {
         sb.append(", jdbcSqlCacheSize=").append(jdbcSqlCacheSize);
         sb.append(", traceSqlBindValue=").append(traceSqlBindValue);
         sb.append(", maxSqlBindValueSize=").append(maxSqlBindValueSize);
+        //aql
+        sb.append(", traceAqlBindValue=").append(traceAqlBindValue);
+        sb.append(", maxAqlBindValueSize=").append(maxAqlBindValueSize);
         sb.append(", samplingEnable=").append(samplingEnable);
         sb.append(", samplingRate=").append(samplingRate);
         sb.append(", ioBufferingEnable=").append(ioBufferingEnable);

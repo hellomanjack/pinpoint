@@ -160,4 +160,7 @@ public interface ProfilerConfig {
 
     Map<String, String> readPattern(String propertyNamePatternRegex);
 
+    boolean isTraceAqlBindValue();
+
+    int getMaxAqlBindValueSize();
 }
