@@ -88,6 +88,6 @@ public class ArangoDBPlugin implements ProfilerPlugin, TransformTemplateAware {
 
     @Override
     public void setTransformTemplate(TransformTemplate transformTemplate) {
-
+        this.transformTemplate = transformTemplate;
     }
 }
